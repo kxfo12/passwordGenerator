@@ -1,0 +1,54 @@
+﻿<Window x:Class="generatorHasla.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:generatorHasla"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="50">
+                <StackPanel Margin="20" Width="200" Orientation="Horizontal">
+                    <TextBlock Margin="2">Imię</TextBlock>
+                    <TextBox Margin="2" Width="150"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="20" Orientation="Horizontal">
+                    <TextBlock Margin="2">Nazwisko</TextBlock>
+                    <TextBox Margin="2" Width="122"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="20" Orientation="Horizontal">
+                    <TextBlock Margin="2">Stanowisko</TextBlock>
+                    <ComboBox Margin="2" Width="112">
+                        <ComboBoxItem>Kierownik</ComboBoxItem>
+                        <ComboBoxItem>Starszy programista</ComboBoxItem>
+                        <ComboBoxItem>Młodszy programista</ComboBoxItem>
+                        <ComboBoxItem>Tester</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="50">
+                <StackPanel Margin="15" Width="200" Orientation="Horizontal">
+                    <TextBlock Margin="5">Ile znaków?</TextBlock>
+                    <TextBox x:Name="numberOfCharacters" Margin="5" Width="100"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="15" Orientation="Horizontal">
+                    <CheckBox x:Name="litery" Margin="2"></CheckBox>
+                    <TextBlock Margin="2">Małe i wielkie litery</TextBlock>
+                </StackPanel>
+                <StackPanel Margin="15" Orientation="Horizontal">
+                    <CheckBox x:Name="cyfry" Margin="2"></CheckBox>
+                    <TextBlock Margin="2">Cyfry</TextBlock>
+                </StackPanel>
+                <StackPanel Margin="15" Orientation="Horizontal">
+                    <CheckBox x:Name="znaki" Margin="2"></CheckBox>
+                    <TextBlock Margin="2">Znaki specjalne</TextBlock>
+                </StackPanel>
+                <Button Click="Button_Click">Generuj hasło</Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel>
+            <Button>Zatwierdź</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>
