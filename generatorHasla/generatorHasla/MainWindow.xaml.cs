@@ -13,58 +13,60 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace generatorHasla
+namespace generowaniehasla
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string Haslo = " ";
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void generuj_Click(object sender, RoutedEventArgs e)
         {
-            int counter = 0;
-            int numOfChar = 0;
-            string password = "";
-            string letters = "abcdefghijklmnopqrstuvwxyz";
-            string bigLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string numbers = "1234567890";
-            string characters = "!@#$%^&*()_+";
-            if(int.TryParse(numberOfCharacters.Text, out numOfChar))
+            int dlugosc = 0;
+            Random random = new Random();
+            Haslo = "";
+            if(int.TryParse(liczbaznakow.Text, out dlugosc))
             {
-                if (litery.IsChecked == true)
+                if(malewielkie.IsChecked == true)
                 {
-                    int random = Random.Shared.Next();
-                    password += bigLetters[random];
-                    counter++;
+                    string duze = "QWERTYUIOPASDFGHJKLZXCVBNM";
+                    int indeks = random.Next(duze.Length);
+                        Haslo = Haslo + duze[indeks];
                 }
-                if (cyfry.IsChecked == true)
+                if(cyfry.IsChecked == true)
                 {
-                    int random = Random.Shared.Next();
-                    password += numbers[random];
-                    counter++;
+                    int cyfra = random.Next(10);
+                    Haslo = Haslo + cyfra.ToString();
                 }
-                if (znaki.IsChecked == true)
+                if(specjalne.IsChecked == true)
                 {
-                    int random = Random.Shared.Next();
-                    password += characters[random];
-                    counter++;
+                    string znaki = "!@#$%^&*()_";
+                    int indeks = random.Next(znaki.Length);
+                    Haslo = Haslo + znaki[indeks];
                 }
-                for (int i = counter; i < numOfChar; i++) 
+                while (Haslo.Length < dlugosc)
                 {
-                    int random = Random.Shared.Next();
-                    password += letters[random];
+                    string maleLitery = "qwertyuiopasdfghjklzxcvbnm";
+                    int indeks = random.Next(maleLitery.Length);
+                    Haslo = Haslo + maleLitery[indeks];
                 }
-                MessageBox.Show(password, "");
+                MessageBox.Show("haslo: " + Haslo);
             }
             else
             {
-                MessageBox.Show("Przestań trolować", "Dom ci wybuchne", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBox.Show("dlugosc musi byc liczba");
             }
+        }
+
+        private void zatwierdzbaton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Dane pracownika: "+imiebox.Text+" "+naziwkso.Text+" "+stanowisko.Text+" Hasło: "+Haslo);
         }
     }
 }
